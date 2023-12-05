@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metamaskEthers.js</title>
+</head>
+<body>
+    
+    <script 
+        src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"
+    ></script>
+    <script>
+    const connect = async() =>{    
+    // A Web3Provider wraps a standard Web3 provider, which is
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    
+    // MetaMask requires requesting permission to connect users accounts
+    await provider.send("eth_requestAccounts", []);
+    
+    // The MetaMask plugin also allows signing transactions to
+    // send ether and pay to change state within the blockchain.
+    // For this, you need the account signer...
+    const signer = provider.getSigner()
+    
+    const BlockNumber = await provider.getBlockNumber();
+
+    console.log(BlockNumber);    
+
+}
+  connect();
+
+  //ethers.js version 5.2
+    </script>
+</body>
+</html>
