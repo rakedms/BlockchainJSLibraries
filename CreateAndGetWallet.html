@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet App</title>
+    
+</head>
+<body>
+    <button onclick="createWallet()">Create Wallet</button>
+    <br>
+    <label for="addressInput">Enter Ethereum Address:</label>
+    <input type="text" id="addressInput" placeholder="0x...">
+    <button onclick="getBalance()">Get Balance</button>
+
+    <script src='.\ethers.js-5.5.4\packages\ethers\dist\ethers.esm.min.js'></script>
+    
+    <script>
+        // Declare provider
+        const provider = new ethers.providers.InfuraProvider('homestead', 'df3074c5878c41ffadad5040d7b08329');
+
+        function createWallet() {
+            const newWallet = ethers.Wallet.createRandom();
+            const newAddress = newWallet.address;
+            alert(`New wallet address: ${newAddress}`);
+        }
+
+        async function getBalance() {
+            const addressInput = document.getElementById('addressInput').value;
+            try {
+                const balance = await provider.getBalance(addressInput);
+                alert(`Balance of ${addressInput}: ${ethers.utils.formatEther(balance)} ETH`);
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+    </script>
+</body>
+</html>
