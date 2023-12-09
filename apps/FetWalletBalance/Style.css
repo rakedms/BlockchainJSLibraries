@@ -1,0 +1,110 @@
+/* Reset some default styles to provide consistent base */
+body, h1, h2, h3, p, ul, ol, li, figure, figcaption, blockquote, dl, dd, dt {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    color: #333;
+    background-color: #a9c7d7;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    height: 5vh;
+    margin: 10;
+  }
+  
+  /* Container to center content on the page */
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  /* Navigation styles */
+  nav {
+    background-color: #3498db;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 15px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-weight: bold;
+  }
+  
+  /* Main content area styles */
+  main {
+    padding: 20px 0;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    background-color: #1f97e8;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  button:hover {
+    background-color: #cddfe9;
+    color: #1f97e8;
+  }
+  
+  /* Input styles */
+  input {
+    padding: 5px;
+    font-size: 15px;
+    border: 3px solid #2f83b1;
+    border-radius: 20px;
+  }
+  
+  /* Alert styles */
+  .alert {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+  }
+  
+  .alert-success {
+    background-color: #2ecc71;
+    color: #0f0c0c;
+  }
+  
+  .alert-danger {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
