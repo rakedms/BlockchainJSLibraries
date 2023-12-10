@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Metamask</title>
+    <style>
+        body{
+            background-color: rgb(172, 201, 238);
+            font-size: medium;
+            text-align: center;
+            
+        }
+        button{
+            background-color: rgb(94, 161, 248);
+            font-size: medium; 
+            color: rgb(255, 255, 255); 
+            border-radius: 10px; 
+        }
+        button:hover{
+            background-color: rgba(255, 255, 255, 0.654);
+            color: rgb(94, 161, 248); 
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="connectMetamask()">Connect To Metamask</button>
+    <p id="AccountArea"></p>
+    <br>
+    <button onclick="connectContract()">Connect To Contract</button>
+    <p id="ContractArea"></p>
+    <br>
+    <button  onclick="ReadContract()">Read The Contract</button>
+    <p id="DataArea"></p>
+    <button onclick="BalanceOfTheAddress()">Balance Of The Address
+    </button>
+    <p id="Balance"></p>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+
+
+
+<script>
+    let accounts;
+    const connectMetamask = async() =>{
+        if (window.ethereum !== "undefined"){
+            accounts = await (ethereum.request({method:"eth_requestAccounts"}));
+            account = accounts[0];
+            document.getElementById("AccountArea").innerHTML = "Address" + account;
+        }
+    }
+
+    const BalanceOfTheAddress = async() =>{
+        if (window.ethereum !== "undefined"){
+        const hexBalance = await window.ethereum.request({
+                    method: 'eth_getBalance',
+                    params: [account],
+                });
+        const balanceETH = (parseInt(hexBalance, 16))/(1e18);        
+        document.getElementById("Balance").innerHTML = "Balance" + balanceETH + " Eth";
+        }
+    }
+
+    const connectContract = async () =>{
+        const ABI = [
+	{
+		"inputs": [],
+		"name": "sample",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+    const address = "0x9dDE9600920725EC0a5423B461761f52093B48A5";
+            
+    // Use lowercase 'web3' for the library instance
+    window.web3 = await new Web3(window.ethereum);
+            
+    // Use lowercase 'contract' for the contract instance
+    window.contract = new window.web3.eth.Contract(ABI, address);
+            
+    document.getElementById("ContractArea").innerHTML = "Connected To Smart Contract";
+
+
+    }
+
+    const ReadContract = async () => {
+        const data = await window.contract.methods.sample().call();
+        document.getElementById("DataArea").innerHTML = data;
+    }
+
+</script>
+</html>
