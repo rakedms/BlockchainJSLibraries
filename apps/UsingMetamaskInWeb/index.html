@@ -81,11 +81,7 @@
 	}
 ];
     const address = "0x9dDE9600920725EC0a5423B461761f52093B48A5";
-            
-    // Use lowercase 'web3' for the library instance
     window.web3 = await new Web3(window.ethereum);
-            
-    // Use lowercase 'contract' for the contract instance
     window.contract = new window.web3.eth.Contract(ABI, address);
             
     document.getElementById("ContractArea").innerHTML = "Connected To Smart Contract";
